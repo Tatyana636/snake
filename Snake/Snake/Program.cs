@@ -1,28 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+
 
 namespace Snake
 {
     class Program
     {
+
         static void Main(string[] args)
         {
+            int MINCHAR = 33;
+            int MAXCHAR = 42;
+            int MAXPOINT = 10;
+            int MINXY = 0;
+            char HVLINE = '#';
+            int WIGHT = 50;
+            int HEIGHT = 20; 
 
-            VerticalLine leftwall = new VerticalLine(0, 24, 0, '*');
-            VerticalLine rightwall = new VerticalLine(0, 24, 78, '*');
-            HorizontalLine upside = new HorizontalLine(0, 78, 0, '*');
-            HorizontalLine downside = new HorizontalLine(0, 78, 24, '*');
+            Console.SetWindowSize(WIGHT + 2, HEIGHT + 2);
+            Console.SetBufferSize(WIGHT + 2, HEIGHT + 2);
 
-            downside.Drow();
-            rightwall.Drow();
-            upside.Drow();
-            leftwall.Drow();
+            HorizontalLine LeftLine = new HorizontalLine(MINXY, WIGHT, MINXY, HVLINE);
+            HorizontalLine RightLine = new HorizontalLine(MINXY, WIGHT, HEIGHT, HVLINE);
+            VerticalLine UpLne = new VerticalLine(MINXY, MINXY, HEIGHT, HVLINE);
+            VerticalLine DownLine = new VerticalLine(WIGHT, MINXY, HEIGHT, HVLINE);
+            DownLine.Drow();
+            UpLne.Drow();
+            LeftLine.Drow();
+            RightLine.Drow();
 
-            Point p = new Point(4, 5, '*');
-            p.Draw();
+            Point p1 = new Point(4, 5, '*');
+            Snake snake = new Snake(p1, 4, Direction.RIGHT);
+            snake.Drow();
 
             Console.ReadKey();
         }
+
     }
 }
