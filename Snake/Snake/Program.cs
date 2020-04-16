@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace Snake
 {
@@ -7,19 +8,21 @@ namespace Snake
     {
         static void Main(string[] args)
         {
-            Point p1 = new Point(1, 3, '*');
-             p1.Draw();
 
-             Point p2 = new Point(4, 5, '#');
-             p2.Draw();
+            VerticalLine leftwall = new VerticalLine(0, 24, 0, '*');
+            VerticalLine rightwall = new VerticalLine(0, 24, 78, '*');
+            HorizontalLine upside = new HorizontalLine(0, 78, 0, '*');
+            HorizontalLine downside = new HorizontalLine(0, 78, 24, '*');
 
-            HorizontalLine Hline = new HorizontalLine(5, 10, 8, '+');
-            Hline.Drow();
+            downside.Drow();
+            rightwall.Drow();
+            upside.Drow();
+            leftwall.Drow();
 
-            VerticalLine Vline = new VerticalLine(2, 8, 2, '/');
-            Vline.Drow();
+            Point p = new Point(4, 5, '*');
+            p.Draw();
 
-            Console.ReadLine();
+            Console.ReadKey();
         }
     }
 }
