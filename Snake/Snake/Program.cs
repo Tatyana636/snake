@@ -24,9 +24,15 @@ namespace Snake
             HorizontalLine LeftLine = new HorizontalLine(MINXY, WIGHT, MINXY, HVLINE);
             HorizontalLine RightLine = new HorizontalLine(MINXY, WIGHT, HEIGHT, HVLINE);
             VerticalLine UpLne = new VerticalLine(MINXY, MINXY, HEIGHT, HVLINE);
-            VerticalLine DownLine = new VerticalLine(WIGHT, MINXY, HEIGHT, HVLINE);
-            DownLine.Drow();
+            VerticalLine DownLine = new VerticalLine(MINXY, WIGHT, HEIGHT, HVLINE);
+
+
+            VerticalLine v1 = new VerticalLine(0, 10, 5, '%');
+            Draw(v1);
+
+
             UpLne.Drow();
+            DownLine.Drow();
             LeftLine.Drow();
             RightLine.Drow();
 
@@ -58,7 +64,23 @@ namespace Snake
                     snake.HandleKey(key.Key);
                 }
             }
-        }
 
+            List<Figure> figures = new List<Figure>();
+            figures.Add(snake);
+            figures.Add(v1);
+            figures.Add(DownLine);
+            figures.Add(LeftLine);
+            figures.Add(RightLine);
+
+            foreach (var f in figures)
+            {
+                f.Drow();
+            }
+
+        static void Draw(Figure figure)
+        {
+            figure.Drow();
+        }
     }
+}
 }
