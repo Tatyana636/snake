@@ -27,8 +27,6 @@ namespace Snake
             this.y = y;
             this.sym = sym;
         }
-
-        //  Функция смещения. (метод)
         public void Move(int offset, Direction direction)
         {
             if (direction == Direction.RIGHT)
