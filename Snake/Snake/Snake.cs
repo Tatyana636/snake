@@ -40,8 +40,22 @@ namespace Snake
             nextPoint.Move(1, this.direction);
             return nextPoint;
         }
+        public bool Eat(Point food)
+        {
+            Point head = GetNextPoint();
+            if (head.IsHit(food))
+            {
+                food.sym = head.sym;
+                pList.Add(food);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
 
-        public void HandleKey(ConsoleKey key)
+        }
+    public void HandleKey(ConsoleKey key)
         {
             if (key == ConsoleKey.LeftArrow)
                 direction = Direction.LEFT;

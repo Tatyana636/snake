@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
 namespace Snake
 {
     class Point
@@ -9,32 +8,36 @@ namespace Snake
         public int x;
         public int y;
         public char sym;
-        
-        public Point(int _x, int _y, char _sym){
-            x = _x;
-            y = _y;
-            sym = _sym;
+
+        public Point()
+        {
+
         }
+
         public Point(Point p)
         {
             x = p.x;
             y = p.y;
             sym = p.sym;
         }
-        public void Clear()
+
+        public Point(int x, int y, char sym)
         {
-            sym = ' ';
-            Draw();
+            this.x = x;
+            this.y = y;
+            this.sym = sym;
         }
+
+        //  Функция смещения. (метод)
         public void Move(int offset, Direction direction)
         {
-            if(direction == Direction.RIGHT)
+            if (direction == Direction.RIGHT)
             {
                 x = x + offset;
             }
             else if (direction == Direction.LEFT)
             {
-                x = x - offset;
+                x = x -  offset;
             }
             else if (direction == Direction.UP)
             {
@@ -45,10 +48,28 @@ namespace Snake
                 y = y + offset;
             }
         }
+
+        internal void Clear()
+        {
+            this.sym = ' ';
+            Draw();
+        }
+
         public void Draw()
         {
             Console.SetCursorPosition(x, y);
             Console.Write(sym);
         }
+
+        public override string ToString()
+        {
+            return x + ", " + y + ", " + sym;
+        }
+
+        internal bool IsHit(Point food)
+        {
+            return food.x == this.x && food.y == this.y;
+        }
     }
+
 }
